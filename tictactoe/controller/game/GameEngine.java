@@ -13,12 +13,12 @@ public class GameEngine {
         board = new TicTacToeBoard();
     }
 
-    public void initBoardFromUserLine() {
-        String boardState = getBoardStateFromUserLine();
+    public void initBoardFromPlayerLine() {
+        String boardState = getBoardStateFromPlayerLine();
         board.initBoardFromCells(boardState);
     }
 
-    private String getBoardStateFromUserLine() {
+    private String getBoardStateFromPlayerLine() {
         return IOHandler.promptEnterTheCells();
     }
 
@@ -26,17 +26,35 @@ public class GameEngine {
         return IOHandler.prompEnterTheCoordinates();
     }
 
-    public Point getUserIntCoordinate() {
+    public Point getPlayerCoordinate() {
         while (true) {
             String lineCoordinate = getLineCoordinate();
             Point coordinate = CoordinateParser.parse(lineCoordinate);
-            if (handleUserIntCoordinate(coordinate)) {
+            if (handlePlayerIntCoordinate(coordinate)) {
                 return coordinate;
             }
         }
     }
 
-    private boolean handleUserIntCoordinate(Point p) {
+    private Cell getNextPlayer() {
+        int countX = 0;
+        int countO = 0;
+
+        for (int i = 0; i < board.ROWS; i++) {
+            for (int j = 0; j < board.COLS; j++) {
+                if (board.getCellState(i, j) == Cell.X) {
+                    countX++;
+                } else if (board.getCellState(i, j) == Cell.O) {
+                    countO++;
+                }
+            }
+        }
+
+        return countX > countO ? Cell.O : Cell.X;
+    }
+
+
+    private boolean handlePlayerIntCoordinate(Point p) {
         if (isCoordinateOutOfRange(p)) {
             IOHandler.displayErrorCoordinates();
             return false;
@@ -47,7 +65,7 @@ public class GameEngine {
             IOHandler.displayErrorOcupedCell();
             return false;
         } else {
-            board.updateBoard(p.getX() - 1, p.getY() - 1, Cell.X);
+            board.updateBoard(p.getX() - 1, p.getY() - 1, getNextPlayer());
             return true;
         }
     }

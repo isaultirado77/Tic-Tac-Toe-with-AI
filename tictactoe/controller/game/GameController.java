@@ -10,7 +10,6 @@ public class GameController implements Runnable{
 
     @Override
     public void run() {
-        gameEngine.displayBoardState();
         gameEngine.initBoardFromUserLine();
         gameEngine.displayBoardState();
         gameEngine.getUserIntCoordinate();

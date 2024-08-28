@@ -27,12 +27,12 @@ public class GameEngine {
         while (true) {
             String lineCoordinate = getLineCoordinate();
             Point coordinate = CoordinateParser.parse(lineCoordinate);
-            if (coordinate.getX() == -1 || coordinate.getY() == -1) {
-                Printer.println("Error! Coordinates should be from 1 to 3!");
-            } else if (coordinate.getX() == -2 || coordinate.getY() == -2) {
-                Printer.println("Error! Invalid number format. You should enter numbers!");
-            } else if (!board.isEmptyCell(coordinate.getX() - 1, coordinate.getY() - 1)) {
-                Printer.println("Error! This cell is occupied! Choose another one!");
+            if (isCoordinateOutOfRange(coordinate)) {
+                IOHandler.displayErrorCoordinates();
+            } else if (isCoordinateInvalidFormat(coordinate)) {
+                IOHandler.displayErrorInvalidFormat();
+            } else if (isCellOccupied(coordinate)) {
+                IOHandler.displayErrorOcupedCell();
             } else {
                 board.updateBoard(coordinate.getX() - 1, coordinate.getY() - 1, Cell.X);
                 System.out.println(coordinate.toString());
@@ -41,27 +41,28 @@ public class GameEngine {
         }
     }
 
-    public void handleUserIntCoordinate(Point p){
-        if (p.getX() == -1 || p.getY() == -1) {
-            IOHandler.displayErrorCoordinates();
-        } else if (p.getX() == -2 || p.getY() == -2) {
-            IOHandler.displayErrorInvalidFormat();
-        } else if (!board.isEmptyCell(p.getX() - 1, p.getY() - 1)) {
-            IOHandler.displayErrorOcupedCell();
-        } else {
-            board.updateBoard(p.getX() - 1, p.getY() - 1, Cell.X);
-            System.out.println(p.toString());
-        }
-    }
-
-
     private String getLineCoordinate() {
         return IOHandler.prompEnterTheCoordinates();
     }
 
-    private boolean isValidUserCoordinate(Point point) {
-        return point.getX() > 0 && point.getY() > 0;
+    private boolean isValidCoordinate(Point p) {
+        return !isCoordinateOutOfRange(p) &&
+                !isCoordinateInvalidFormat(p) &&
+                !isCellOccupied(p);
     }
+
+    private boolean isCoordinateOutOfRange(Point p) {
+        return p.getX() == -1 || p.getY() == -1;
+    }
+
+    private boolean isCoordinateInvalidFormat(Point p) {
+        return p.getX() == -2 || p.getY() == -2;
+    }
+
+    private boolean isCellOccupied(Point p) {
+        return !board.isEmptyCell(p.getX() - 1, p.getY() - 1);
+    }
+
 
     public void displayBoardState() {
         board.displayBoard();

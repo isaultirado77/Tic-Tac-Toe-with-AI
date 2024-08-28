@@ -37,7 +37,7 @@ public class IOHandler {
     }
 
     public static void displayErrorOcupedCell(){
-        Printer.println(IOMessages.ENTER_THE_CELLS.getTEXT());
+        Printer.println(IOMessages.ERROR_OCCUPIED_CELL.getTEXT());
     }
 
     public static String prompEnterTheCoordinates(){

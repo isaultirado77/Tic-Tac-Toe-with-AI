@@ -1,7 +1,6 @@
 package tictactoe.controller.game;
 
 import tictactoe.io.IOHandler;
-import tictactoe.io.Printer;
 import tictactoe.model.board.Cell;
 import tictactoe.model.board.Point;
 import tictactoe.model.board.TicTacToeBoard;
@@ -23,32 +22,34 @@ public class GameEngine {
         return IOHandler.promptEnterTheCells();
     }
 
-    public void getUserIntCoordinate() {
-        while (true) {
-            String lineCoordinate = getLineCoordinate();
-            Point coordinate = CoordinateParser.parse(lineCoordinate);
-            if (isCoordinateOutOfRange(coordinate)) {
-                IOHandler.displayErrorCoordinates();
-            } else if (isCoordinateInvalidFormat(coordinate)) {
-                IOHandler.displayErrorInvalidFormat();
-            } else if (isCellOccupied(coordinate)) {
-                IOHandler.displayErrorOcupedCell();
-            } else {
-                board.updateBoard(coordinate.getX() - 1, coordinate.getY() - 1, Cell.X);
-                System.out.println(coordinate.toString());
-                return;
-            }
-        }
-    }
-
     private String getLineCoordinate() {
         return IOHandler.prompEnterTheCoordinates();
     }
 
-    private boolean isValidCoordinate(Point p) {
-        return !isCoordinateOutOfRange(p) &&
-                !isCoordinateInvalidFormat(p) &&
-                !isCellOccupied(p);
+    public Point getUserIntCoordinate() {
+        while (true) {
+            String lineCoordinate = getLineCoordinate();
+            Point coordinate = CoordinateParser.parse(lineCoordinate);
+            if (handleUserIntCoordinate(coordinate)) {
+                return coordinate;
+            }
+        }
+    }
+
+    private boolean handleUserIntCoordinate(Point p) {
+        if (isCoordinateOutOfRange(p)) {
+            IOHandler.displayErrorCoordinates();
+            return false;
+        } else if (isCoordinateInvalidFormat(p)) {
+            IOHandler.displayErrorInvalidFormat();
+            return false;
+        } else if (isCellOccupied(p)) {
+            IOHandler.displayErrorOcupedCell();
+            return false;
+        } else {
+            board.updateBoard(p.getX() - 1, p.getY() - 1, Cell.X);
+            return true;
+        }
     }
 
     private boolean isCoordinateOutOfRange(Point p) {

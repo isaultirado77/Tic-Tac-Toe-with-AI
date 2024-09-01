@@ -1,7 +1,8 @@
 package tictactoe.model.players;
 
-import tictactoe.model.board.Board;
 import tictactoe.model.board.Cell;
+import tictactoe.model.board.Point;
+import tictactoe.model.board.TicTacToeBoard;
 
 public abstract class Player {
 
@@ -16,6 +17,6 @@ public abstract class Player {
     }
 
     // Abstract method to make a move
-    public abstract void makeMove(Board board);
+    public abstract Point makeMove(TicTacToeBoard board);
 
 }

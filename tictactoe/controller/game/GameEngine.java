@@ -42,6 +42,9 @@ public class GameEngine {
     }
 
     public void makeMove() {
+        if (player1 == null || player2 == null) {
+            return;
+        }
         currentPlayer = getCurrentPlayer();
         Point move = currentPlayer.makeMove(board);
         updateBoard(move);

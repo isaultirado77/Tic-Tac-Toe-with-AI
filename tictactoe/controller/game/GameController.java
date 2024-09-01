@@ -25,7 +25,9 @@ public class GameController {
             IOHandler.displayBadParameters();
         } else {
             gameEngine = new GameEngine(split);
-            run();
+            if (gameEngine.getPlayer1() != null && gameEngine.getPlayer2() != null) {
+                run();
+            }
         }
     }
 

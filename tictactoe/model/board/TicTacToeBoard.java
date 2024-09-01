@@ -33,14 +33,11 @@ public class TicTacToeBoard implements Board {
     }
 
     private Cell getCellFromChar(char c) {
-        switch (c) {
-            case 'X':
-                return Cell.X;
-            case 'O':
-                return Cell.O;
-            default:
-                return Cell.EMPTY;
-        }
+        return switch (c) {
+            case 'X' -> Cell.X;
+            case 'O' -> Cell.O;
+            default -> Cell.EMPTY;
+        };
     }
 
     @Override

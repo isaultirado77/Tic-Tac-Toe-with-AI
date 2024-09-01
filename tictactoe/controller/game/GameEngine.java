@@ -53,7 +53,6 @@ public class GameEngine {
         return countX > countO ? Cell.O : Cell.X;
     }
 
-
     private boolean handlePlayerIntCoordinate(Point p) {
         if (isCoordinateOutOfRange(p)) {
             IOHandler.displayErrorCoordinates();
@@ -82,6 +81,16 @@ public class GameEngine {
         return !board.isEmptyCell(p.getX() - 1, p.getY() - 1);
     }
 
+    public void isGameOver() {
+
+    }
+
+    private boolean isVerticalWin(){
+        for (int i = 0; i < board.ROWS; i++){
+
+        }
+        return false;
+    }
 
     public void displayBoardState() {
         board.displayBoard();

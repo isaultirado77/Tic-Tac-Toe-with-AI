@@ -2,7 +2,7 @@ package tictactoe.controller.game;
 
 public class GameController implements Runnable{
 
-    private GameEngine gameEngine;
+    private final GameEngine gameEngine;
 
     public GameController(){
         gameEngine = new GameEngine();

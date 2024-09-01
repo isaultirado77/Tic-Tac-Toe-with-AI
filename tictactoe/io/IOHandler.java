@@ -42,8 +42,20 @@ public class IOHandler {
         Printer.println(IOMessages.ERROR_OCCUPIED_CELL.getTEXT());
     }
 
-    public static String prompEnterTheCoordinates(){
+    public static String promptEnterTheCoordinates(){
         Printer.print(IOMessages.ENTER_THE_COORDINATES.getTEXT());
         return readNextLine();
+    }
+
+    public static void displayGameState(boolean isWin, boolean isDraw, String winner){
+        if (isWin){
+            Printer.println(winner + IOMessages.WIN.getTEXT());
+        } else if (isDraw) {
+            Printer.println(IOMessages.DRAW.getTEXT());
+        }
+    }
+
+    public static void displayMakeBotMove(String difficulty){
+        Printer.println(IOMessages.MAKE_BOT_MOVE.getTEXT() + difficulty);
     }
 }

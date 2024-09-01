@@ -33,7 +33,7 @@ public class Human extends Player{
     }
 
     private String getLineCoordinate() {
-        return IOHandler.prompEnterTheCoordinates();
+        return IOHandler.promptEnterTheCoordinates();
     }
 
     private boolean handlePlayerIntCoordinate(Point p, TicTacToeBoard board) {

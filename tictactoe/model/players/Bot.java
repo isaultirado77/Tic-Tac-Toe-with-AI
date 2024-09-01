@@ -1,6 +1,6 @@
 package tictactoe.model.players;
 
-import tictactoe.io.Printer;
+import tictactoe.io.IOHandler;
 import tictactoe.model.board.Cell;
 import tictactoe.model.board.Point;
 import tictactoe.model.board.TicTacToeBoard;
@@ -19,7 +19,8 @@ public class Bot extends Player {
     }
 
     private Point easyDifficulty(TicTacToeBoard board) {
-        Printer.println("Making move level \"easy\"");
+        String difficulty = "\"easy\"";
+        IOHandler.displayMakeBotMove(difficulty);
         while (true){
             Point coordinate = getCoordinatesEasyDifficulty();
 

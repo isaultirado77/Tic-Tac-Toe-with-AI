@@ -1,6 +1,6 @@
 package tictactoe.controller.game;
 
-import tictactoe.io.Printer;
+import tictactoe.io.IOHandler;
 import tictactoe.model.board.Cell;
 import tictactoe.model.board.Point;
 import tictactoe.model.board.TicTacToeBoard;
@@ -43,11 +43,7 @@ public class GameEngine {
 
     public void displayGameState(){
         displayBoardState();
-        if (isWin()){
-            Printer.println(currentPlayer.toString() + " wins!");
-        } else if (isDraw()) {
-            Printer.println("Draw!");
-        }
+        IOHandler.displayGameState(isWin(), isDraw(), currentPlayer.toString());
     }
 
     public void switchTurns(){

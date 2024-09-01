@@ -1,7 +1,6 @@
 package tictactoe;
 
 import tictactoe.controller.game.GameController;
-import tictactoe.io.Printer;
 
 public class Main {
     public static void main(String[] args) {

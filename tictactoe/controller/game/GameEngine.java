@@ -11,19 +11,25 @@ public class GameEngine {
     private TicTacToeBoard board;
     private Player human;
     private Player bot;
+    private boolean isHumanTurn;
+
     public GameEngine() {
         board = new TicTacToeBoard();
         human = new Human(Cell.X);
         bot = new Bot(Cell.O);
+        isHumanTurn = true;
     }
-
 
     private boolean isGameOver() {
         return board.isGameOver();
     }
 
-    private boolean isGameNotFinished() {
-        return board.hasEmptyCells();
+    public void switchTurns(){
+        isHumanTurn =! isHumanTurn;
+    }
+
+    public Cell getCurrentPlayer(){
+        return isHumanTurn ? human.getSymbol() : bot.getSymbol();
     }
 
     public void displayBoardState() {

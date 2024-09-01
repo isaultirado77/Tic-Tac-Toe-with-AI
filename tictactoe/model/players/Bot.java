@@ -1,5 +1,6 @@
 package tictactoe.model.players;
 
+import tictactoe.io.Printer;
 import tictactoe.model.board.Cell;
 import tictactoe.model.board.Point;
 import tictactoe.model.board.TicTacToeBoard;
@@ -18,6 +19,7 @@ public class Bot extends Player {
     }
 
     private Point easyDifficulty(){
+        Printer.println("Making move level \"easy\"");
         int row = generateRandomNumberOnRange(0, 2);
         int col = generateRandomNumberOnRange(0, 2);
         return new Point(row, col);

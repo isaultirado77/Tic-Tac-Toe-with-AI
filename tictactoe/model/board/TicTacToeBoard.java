@@ -114,9 +114,6 @@ public class TicTacToeBoard implements Board {
 
     @Override
     public boolean isGameOver() {
-        System.out.println(isVerticalWin());
-        System.out.println(isHorizontalWin());
-        System.out.println(isDiagonalWin());
         return isVerticalWin() || isHorizontalWin() || isDiagonalWin();
     }
 

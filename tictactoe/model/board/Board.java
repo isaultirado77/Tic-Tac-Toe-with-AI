@@ -8,5 +8,9 @@ public interface Board {
 
     Cell getCellState(int row, int col);
 
+    boolean isGameOver();
+
+    boolean isEmptyCell(int row, int col);
+
     void resetBoard();
 }

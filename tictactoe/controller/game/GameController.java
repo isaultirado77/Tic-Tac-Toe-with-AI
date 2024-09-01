@@ -1,6 +1,8 @@
 package tictactoe.controller.game;
 
-public class GameController implements Runnable {
+import tictactoe.io.IOHandler;
+
+public class GameController {
 
     private final GameEngine gameEngine;
 
@@ -8,7 +10,17 @@ public class GameController implements Runnable {
         gameEngine = new GameEngine();
     }
 
-    @Override
+    public void start(){
+        while (true){
+            String command = IOHandler.promptInputTheComand();
+
+            if (command.equalsIgnoreCase("exit")){
+                break;
+            }
+            run();
+        }
+    }
+
     public void run() {
         while (true){
             gameEngine.displayBoardState();
@@ -19,5 +31,9 @@ public class GameController implements Runnable {
             }
             gameEngine.switchTurns();
         }
+    }
+
+    private void handleCommandAction(String command){
+
     }
 }

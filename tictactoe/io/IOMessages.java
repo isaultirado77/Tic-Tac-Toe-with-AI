@@ -8,7 +8,8 @@ public enum IOMessages {
     ERROR_OCCUPIED_CELL("Error! This cell is occupied! Choose another one!"),
     WIN(" wins!"),
     DRAW("Draw!"),
-    MAKE_BOT_MOVE("Making move level ")
+    MAKE_BOT_MOVE("Making move level "),
+    INPUT_COMAND("Input command: ")
     ;
 
     private final String TEXT;

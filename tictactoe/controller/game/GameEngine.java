@@ -1,5 +1,6 @@
 package tictactoe.controller.game;
 
+import tictactoe.io.Printer;
 import tictactoe.model.board.Cell;
 import tictactoe.model.board.Point;
 import tictactoe.model.board.TicTacToeBoard;
@@ -9,9 +10,9 @@ import tictactoe.model.players.Player;
 
 public class GameEngine {
 
-    private TicTacToeBoard board;
-    private Player human;
-    private Player bot;
+    private final TicTacToeBoard board;
+    private final Player human;
+    private final Player bot;
     private Player currentPlayer;
     private boolean isHumanTurn;
 
@@ -28,8 +29,24 @@ public class GameEngine {
         updateBoard(move);
     }
 
-    public boolean isGameOver() {
+    public boolean isGameOver(){
         return board.isGameOver();
+    }
+
+    private boolean isWin() {
+        return board.isWin();
+    }
+
+    private boolean isDraw(){
+        return board.isDraw();
+    }
+
+    public void displayGameState(){
+        if (isWin()){
+            Printer.println(currentPlayer.toString() + " win!");
+        } else if (isDraw()) {
+            Printer.println("Draw!");
+        }
     }
 
     public void switchTurns(){

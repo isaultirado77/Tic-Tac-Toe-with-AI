@@ -10,9 +10,13 @@ public class GameController implements Runnable {
 
     @Override
     public void run() {
-        while (!gameEngine.isGameOver()){
+        while (true){
             gameEngine.displayBoardState();
             gameEngine.makeMove();
+            if (gameEngine.isGameOver()){
+                gameEngine.displayGameState();
+                break;
+            }
             gameEngine.switchTurns();
         }
     }

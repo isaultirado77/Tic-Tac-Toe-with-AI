@@ -6,7 +6,7 @@ public class TicTacToeBoard implements Board {
 
     public final int ROWS = 3;
     public final int COLS = 3;
-    private Cell[][] board;
+    private final Cell[][] board;
 
     public TicTacToeBoard() {
         board = new Cell[ROWS][COLS];
@@ -98,10 +98,29 @@ public class TicTacToeBoard implements Board {
     }
 
     @Override
-    public boolean isGameOver() {
+    public boolean isWin() {
         return isVerticalWin() || isHorizontalWin() || isDiagonalWin();
     }
 
+    public boolean isDraw() {
+        int count = 0;
+        for (int i = 0; i < ROWS; i++) {
+            Printer.print("| ");
+            for (int j = 0; j < COLS; j++) {
+                if (getCellState(i, j) != Cell.EMPTY) {
+                    count++;
+                }
+                else {
+                    break;
+                }
+            }
+        }
+        return count == 9;
+    }
+
+    public boolean isGameOver(){
+        return isWin() || isDraw();
+    }
 
     @Override
     public boolean isEmptyCell(int row, int col) {

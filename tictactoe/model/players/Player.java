@@ -19,4 +19,8 @@ public abstract class Player {
     // Abstract method to make a move
     public abstract Point makeMove(TicTacToeBoard board);
 
+    @Override
+    public String toString() {
+        return symbol.getSymbol();
+    }
 }

@@ -10,6 +10,8 @@ public interface Board {
 
     boolean isGameOver();
 
+    boolean isWin();
+
     boolean isEmptyCell(int row, int col);
 
     void resetBoard();

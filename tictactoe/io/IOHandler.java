@@ -10,6 +10,7 @@ public class IOHandler {
         return scanner.nextLine();
     }
 
+    @SuppressWarnings("unused")
     public static int readInteger() {
         try {
             return Integer.parseInt(readNextLine());
@@ -23,6 +24,7 @@ public class IOHandler {
         return scanner;
     }
 
+    @SuppressWarnings("unused")
     public static String promptEnterTheCells(){
         Printer.print(IOMessages.ENTER_THE_CELLS.getTEXT());
         return readNextLine();

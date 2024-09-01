@@ -1,6 +1,7 @@
 package tictactoe.controller.game;
 
 import tictactoe.model.board.Cell;
+import tictactoe.model.board.Point;
 import tictactoe.model.board.TicTacToeBoard;
 import tictactoe.model.players.Bot;
 import tictactoe.model.players.Human;
@@ -11,6 +12,7 @@ public class GameEngine {
     private TicTacToeBoard board;
     private Player human;
     private Player bot;
+    private Player currentPlayer;
     private boolean isHumanTurn;
 
     public GameEngine() {
@@ -20,7 +22,13 @@ public class GameEngine {
         isHumanTurn = true;
     }
 
-    private boolean isGameOver() {
+    public void makeMove(){
+        currentPlayer = getCurrentPlayer();
+        Point move = currentPlayer.makeMove(board);
+        updateBoard(move);
+    }
+
+    public boolean isGameOver() {
         return board.isGameOver();
     }
 
@@ -28,8 +36,12 @@ public class GameEngine {
         isHumanTurn =! isHumanTurn;
     }
 
-    public Cell getCurrentPlayer(){
-        return isHumanTurn ? human.getSymbol() : bot.getSymbol();
+    public Player getCurrentPlayer(){
+        return isHumanTurn ? human : bot;
+    }
+
+    private void updateBoard(Point p){
+        board.updateBoard(p.getX(), p.getY(), currentPlayer.getSymbol());
     }
 
     public void displayBoardState() {

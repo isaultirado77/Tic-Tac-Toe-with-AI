@@ -105,7 +105,6 @@ public class TicTacToeBoard implements Board {
     public boolean isDraw() {
         int count = 0;
         for (int i = 0; i < ROWS; i++) {
-            Printer.print("| ");
             for (int j = 0; j < COLS; j++) {
                 if (getCellState(i, j) != Cell.EMPTY) {
                     count++;

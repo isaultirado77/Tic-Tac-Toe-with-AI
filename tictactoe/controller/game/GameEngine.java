@@ -42,8 +42,9 @@ public class GameEngine {
     }
 
     public void displayGameState(){
+        displayBoardState();
         if (isWin()){
-            Printer.println(currentPlayer.toString() + " win!");
+            Printer.println(currentPlayer.toString() + " wins!");
         } else if (isDraw()) {
             Printer.println("Draw!");
         }

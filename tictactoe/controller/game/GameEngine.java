@@ -1,6 +1,7 @@
 package tictactoe.controller.game;
 
 import tictactoe.io.IOHandler;
+import tictactoe.io.Printer;
 import tictactoe.model.board.Cell;
 import tictactoe.model.board.Point;
 import tictactoe.model.board.TicTacToeBoard;
@@ -8,6 +9,8 @@ import tictactoe.model.board.TicTacToeBoard;
 public class GameEngine {
 
     private TicTacToeBoard board;
+
+    private Cell currentPlayer;
 
     public GameEngine() {
         board = new TicTacToeBoard();
@@ -64,7 +67,8 @@ public class GameEngine {
             IOHandler.displayErrorOcupedCell();
             return false;
         } else {
-            board.updateBoard(p.getX() - 1, p.getY() - 1, getNextPlayer());
+            currentPlayer = getNextPlayer();
+            board.updateBoard(p.getX() - 1, p.getY() - 1, currentPlayer);
             return true;
         }
     }
@@ -81,12 +85,30 @@ public class GameEngine {
         return !board.isEmptyCell(p.getX() - 1, p.getY() - 1);
     }
 
-    public boolean isGameOver() {
+    private boolean isGameOver() {
         return board.isGameOver();
+    }
+
+    private boolean isGameNotFinished() {
+        return board.hasEmptyCells();
+    }
+
+    public void displayGameState() {
+        if (isGameOver()) {
+            Printer.println(currentPlayer.getSymbol() + " wins");
+        } else if (isGameNotFinished()) {
+            Printer.println("Game not finished!");
+        }else {
+            Printer.println("Draw");
+        }
     }
 
     public void displayBoardState() {
         board.displayBoard();
+    }
+
+    public Cell getCurrentPlayer() {
+        return currentPlayer;
     }
 
 }

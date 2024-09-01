@@ -1,10 +1,10 @@
 package tictactoe.controller.game;
 
-public class GameController implements Runnable{
+public class GameController implements Runnable {
 
     private final GameEngine gameEngine;
 
-    public GameController(){
+    public GameController() {
         gameEngine = new GameEngine();
     }
 
@@ -14,5 +14,6 @@ public class GameController implements Runnable{
         gameEngine.displayBoardState();
         gameEngine.getPlayerCoordinate();
         gameEngine.displayBoardState();
+        gameEngine.displayGameState();
     }
 }

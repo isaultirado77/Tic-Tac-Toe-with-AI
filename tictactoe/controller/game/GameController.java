@@ -4,36 +4,42 @@ import tictactoe.io.IOHandler;
 
 public class GameController {
 
-    private final GameEngine gameEngine;
+    private GameEngine gameEngine;
 
-    public GameController() {
-        gameEngine = new GameEngine();
-    }
+    public void start() {
+        while (true) {
+            String command = IOHandler.promptInputTheCommand();
 
-    public void start(){
-        while (true){
-            String command = IOHandler.promptInputTheComand();
-
-            if (command.equalsIgnoreCase("exit")){
+            if (command.equalsIgnoreCase("exit")) {
                 break;
             }
+
+            handleCommandAction(command);
+        }
+    }
+
+    private void handleCommandAction(String command) {
+        String[] split = command.split(" ");
+
+        if (split.length != 3) {
+            IOHandler.displayBadParameters();
+        } else {
+            gameEngine = new GameEngine(split);
             run();
         }
     }
 
     public void run() {
-        while (true){
+        while (true) {
             gameEngine.displayBoardState();
             gameEngine.makeMove();
-            if (gameEngine.isGameOver()){
+            if (gameEngine.isGameOver()) {
                 gameEngine.displayGameState();
+                break;
+            } else if (gameEngine.getPlayer1() == null ||gameEngine.getPlayer2() == null) {
                 break;
             }
             gameEngine.switchTurns();
         }
-    }
-
-    private void handleCommandAction(String command){
-
     }
 }

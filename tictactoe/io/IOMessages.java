@@ -9,7 +9,8 @@ public enum IOMessages {
     WIN(" wins!"),
     DRAW("Draw!"),
     MAKE_BOT_MOVE("Making move level "),
-    INPUT_COMAND("Input command: ")
+    INPUT_COMMAND("Input command: "),
+    BAD_PARAMETERS("Bad parameters!")
     ;
 
     private final String TEXT;

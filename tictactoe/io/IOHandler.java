@@ -59,8 +59,12 @@ public class IOHandler {
         Printer.println(IOMessages.MAKE_BOT_MOVE.getTEXT() + difficulty);
     }
 
-    public static String promptInputTheComand() {
-        Printer.print(IOMessages.INPUT_COMAND.getTEXT());
+    public static String promptInputTheCommand() {
+        Printer.print(IOMessages.INPUT_COMMAND.getTEXT());
         return readNextLine();
+    }
+
+    public static void displayBadParameters() {
+        Printer.println(IOMessages.BAD_PARAMETERS.getTEXT());
     }
 }

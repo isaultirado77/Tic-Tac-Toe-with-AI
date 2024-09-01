@@ -9,8 +9,11 @@ import java.util.Random;
 
 public class Bot extends Player {
 
-    public Bot(Cell symbol) {
+    private String difficulty;
+
+    public Bot(Cell symbol, String difficulty) {
         super(symbol);
+        this.difficulty = difficulty;
     }
 
     @Override
@@ -19,8 +22,7 @@ public class Bot extends Player {
     }
 
     private Point easyDifficulty(TicTacToeBoard board) {
-        String difficulty = "\"easy\"";
-        IOHandler.displayMakeBotMove(difficulty);
+        IOHandler.displayMakeBotMove("\"" + this.difficulty + "\"");
         while (true){
             Point coordinate = getCoordinatesEasyDifficulty();
 

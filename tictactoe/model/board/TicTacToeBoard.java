@@ -22,24 +22,6 @@ public class TicTacToeBoard implements Board {
         }
     }
 
-    public void initBoardFromCells(String cell) {
-        int cellIndex = 0;
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
-                board[i][j] = getCellFromChar(cell.charAt(cellIndex));
-                cellIndex++;
-            }
-        }
-    }
-
-    private Cell getCellFromChar(char c) {
-        return switch (c) {
-            case 'X' -> Cell.X;
-            case 'O' -> Cell.O;
-            default -> Cell.EMPTY;
-        };
-    }
-
     @Override
     public void updateBoard(int row, int col, Cell cell) {
         this.board[row][col] = cell;
@@ -107,9 +89,12 @@ public class TicTacToeBoard implements Board {
     }
 
     private boolean isDiagonalWin() {
-        boolean mainDiagonal = board[0][0] == board[1][1] && board[1][1] == board[2][2];
-        boolean secondDiagonal = board[0][2] == board[1][1] && board[1][1] == board[2][0];
-        return mainDiagonal || secondDiagonal;
+        if (board[1][1] != Cell.EMPTY) {
+            boolean mainDiagonal = board[0][0] == board[1][1] && board[1][1] == board[2][2];
+            boolean secondDiagonal = board[0][2] == board[1][1] && board[1][1] == board[2][0];
+            return mainDiagonal || secondDiagonal;
+        }
+        return false;
     }
 
     @Override
@@ -117,17 +102,6 @@ public class TicTacToeBoard implements Board {
         return isVerticalWin() || isHorizontalWin() || isDiagonalWin();
     }
 
-    @Override
-    public boolean hasEmptyCells() {
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
-                if (getCellState(i, j) == Cell.EMPTY) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 
     @Override
     public boolean isEmptyCell(int row, int col) {

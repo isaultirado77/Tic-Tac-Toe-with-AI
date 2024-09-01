@@ -23,9 +23,13 @@ public class Human extends Player{
             String lineCoordinate = getLineCoordinate();
             Point coordinate = CoordinateParser.parse(lineCoordinate);
             if (handlePlayerIntCoordinate(coordinate, board)) {
-                return coordinate;
+                return parseToBoardCoordinate(coordinate);
             }
         }
+    }
+
+    private Point parseToBoardCoordinate(Point p){
+        return new Point(p.getX() -1, p.getY() -1);
     }
 
     private String getLineCoordinate() {

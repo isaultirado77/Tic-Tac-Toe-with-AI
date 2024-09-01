@@ -15,11 +15,21 @@ public class Bot extends Player {
 
     @Override
     public Point makeMove(TicTacToeBoard board) {
-        return easyDifficulty();
+        return easyDifficulty(board);
     }
 
-    private Point easyDifficulty(){
+    private Point easyDifficulty(TicTacToeBoard board) {
         Printer.println("Making move level \"easy\"");
+        while (true){
+            Point coordinate = getCoordinatesEasyDifficulty();
+
+            if(board.isEmptyCell(coordinate.getX(), coordinate.getY())){
+                return coordinate;
+            }
+        }
+    }
+
+    private Point getCoordinatesEasyDifficulty(){
         int row = generateRandomNumberOnRange(0, 2);
         int col = generateRandomNumberOnRange(0, 2);
         return new Point(row, col);

@@ -1,6 +1,5 @@
 package tictactoe.model.players.bot;
 
-import tictactoe.io.IOHandler;
 import tictactoe.model.board.Cell;
 import tictactoe.model.board.Point;
 import tictactoe.model.board.TicTacToeBoard;
@@ -8,7 +7,6 @@ import tictactoe.model.board.TicTacToeBoard;
 public class MediumBot {
 
     public static Point makeMove(TicTacToeBoard board, Cell symbol) {
-        IOHandler.displayMakeBotMove("\"" + "medium" + "\"");
 
         // 1. Try to win by making a move that completes three in a row
         BooleanPoint winMove = findWinningMove(board, symbol);

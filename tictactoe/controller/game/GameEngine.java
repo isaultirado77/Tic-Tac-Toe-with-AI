@@ -37,7 +37,7 @@ public class GameEngine {
         return switch (playerType.toLowerCase()) {
             case "user" -> new Human(cell);
             case "easy" -> new Bot(cell, playerType);
-//            case "medium" -> new Bot(cell, playerType);
+            case "medium" -> new Bot(cell, playerType);
 //            case "hard" -> new Bot(cell, playerType);
             default -> throw new RuntimeException("Error! " + IOMessages.BAD_PARAMETERS.getTEXT());
         };

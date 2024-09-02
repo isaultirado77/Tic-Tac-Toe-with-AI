@@ -38,7 +38,7 @@ public class IOHandler {
         Printer.println(IOMessages.ERROR_INVALID_FORMAT.getTEXT());
     }
 
-    public static void displayErrorOcupedCell(){
+    public static void displayErrorOccupedCell(){
         Printer.println(IOMessages.ERROR_OCCUPIED_CELL.getTEXT());
     }
 
@@ -56,7 +56,7 @@ public class IOHandler {
     }
 
     public static void displayMakeBotMove(String difficulty){
-        Printer.println(IOMessages.MAKE_BOT_MOVE.getTEXT() + difficulty);
+        Printer.printf(IOMessages.MAKE_BOT_MOVE.getTEXT(), difficulty);
     }
 
     public static String promptInputTheCommand() {

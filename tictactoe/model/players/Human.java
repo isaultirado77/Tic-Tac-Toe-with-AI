@@ -44,7 +44,7 @@ public class Human extends Player{
             IOHandler.displayErrorInvalidFormat();
             return false;
         } else if (isCellOccupied(p, board)) {
-            IOHandler.displayErrorOcupedCell();
+            IOHandler.displayErrorOccupedCell();
             return false;
         } else {
             return true;

@@ -39,7 +39,7 @@ public class GameEngine {
             case "easy" -> new Bot(cell, playerType);
 //            case "medium" -> new Bot(cell, playerType);
 //            case "hard" -> new Bot(cell, playerType);
-            default -> throw new RuntimeException(IOMessages.BAD_PARAMETERS.getTEXT());
+            default -> throw new RuntimeException("Error! " + IOMessages.BAD_PARAMETERS.getTEXT());
         };
     }
 

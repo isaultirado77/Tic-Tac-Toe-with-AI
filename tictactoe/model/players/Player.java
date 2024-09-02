@@ -6,7 +6,7 @@ import tictactoe.model.board.TicTacToeBoard;
 
 public abstract class Player {
 
-    private Cell symbol; // The player symbol can be: 'X' or 'O'
+    private final Cell symbol; // The player symbol can be: 'X' or 'O'
 
     public Player(Cell symbol){
         this.symbol = symbol;

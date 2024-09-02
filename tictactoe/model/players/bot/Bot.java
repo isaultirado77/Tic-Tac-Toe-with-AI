@@ -19,7 +19,7 @@ public class Bot extends Player {
     public Point makeMove(TicTacToeBoard board) {
         return switch (this.difficulty) {
             case "easy" -> EasyBot.makeMove(board);
-            //case "medium" -> mediumDifficulty(board);
+            case "medium" -> MediumBot.makeMove(board, this.getSymbol());
             //case "hard" -> hardDifficulty(board);
             default -> throw new IllegalStateException("Error! "+ IOMessages.BAD_PARAMETERS.getTEXT());
         };

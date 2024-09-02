@@ -6,9 +6,9 @@ import tictactoe.io.Printer;
 import tictactoe.model.board.Cell;
 import tictactoe.model.board.Point;
 import tictactoe.model.board.TicTacToeBoard;
-import tictactoe.model.players.Bot;
 import tictactoe.model.players.Human;
 import tictactoe.model.players.Player;
+import tictactoe.model.players.bot.Bot;
 
 public class GameEngine {
 
@@ -37,8 +37,8 @@ public class GameEngine {
         return switch (playerType.toLowerCase()) {
             case "user" -> new Human(cell);
             case "easy" -> new Bot(cell, playerType);
-            case "medium" -> new Bot(cell, playerType);
-            case "hard" -> new Bot(cell, playerType);
+//            case "medium" -> new Bot(cell, playerType);
+//            case "hard" -> new Bot(cell, playerType);
             default -> throw new RuntimeException(IOMessages.BAD_PARAMETERS.getTEXT());
         };
     }

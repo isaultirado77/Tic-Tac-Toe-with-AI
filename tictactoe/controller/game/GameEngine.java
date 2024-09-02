@@ -27,16 +27,18 @@ public class GameEngine {
             player1 = createPlayer(players[1], Cell.X);
             player2 = createPlayer(players[2], Cell.O);
         }catch (RuntimeException e){
-            Printer.println(e.getMessage());
             player1 = null;
             player2 = null;
+            Printer.println(e.getMessage());
         }
     }
 
     private Player createPlayer(String playerType, Cell cell) {
-        return switch (playerType) {
+        return switch (playerType.toLowerCase()) {
             case "user" -> new Human(cell);
             case "easy" -> new Bot(cell, playerType);
+            case "medium" -> new Bot(cell, playerType);
+            case "hard" -> new Bot(cell, playerType);
             default -> throw new RuntimeException(IOMessages.BAD_PARAMETERS.getTEXT());
         };
     }

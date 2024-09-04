@@ -9,6 +9,7 @@ import tictactoe.model.board.TicTacToeBoard;
 import tictactoe.model.players.Human;
 import tictactoe.model.players.Player;
 import tictactoe.model.players.bot.EasyBot;
+import tictactoe.model.players.bot.HardBot;
 import tictactoe.model.players.bot.MediumBot;
 
 public class GameEngine {
@@ -39,7 +40,7 @@ public class GameEngine {
             case "user" -> new Human(cell);
             case "easy" -> new EasyBot(cell, playerType);
             case "medium" -> new MediumBot(cell, playerType);
-//            case "hard" -> new Bot(cell, playerType);
+            case "hard" -> new HardBot(cell, playerType);
             default -> throw new RuntimeException("Error! " + IOMessages.BAD_PARAMETERS.getTEXT());
         };
     }

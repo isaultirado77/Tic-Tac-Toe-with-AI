@@ -9,6 +9,7 @@ public class MediumBot extends Bot {
         super(mySymbol, difficulty);
     }
 
+    @Override
     public Point executeMove() {
 
         // 1. Try to win by making a move that completes three in a row

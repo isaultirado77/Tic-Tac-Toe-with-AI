@@ -2,6 +2,9 @@ package tictactoe.model.board;
 
 import tictactoe.io.Printer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TicTacToeBoard implements Board {
 
     public final int ROWS = 3;
@@ -115,6 +118,19 @@ public class TicTacToeBoard implements Board {
             }
         }
         return count == 9;
+    }
+
+    /** Method to get the empty cells on the board */
+    public List<Point> getEmptyCells(){
+        List<Point> emptyCells = new ArrayList<Point>();
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                if (getCellState(i, j) != Cell.EMPTY) {
+                    emptyCells.add(new Point(i, j));
+                }
+            }
+        }
+        return emptyCells;
     }
 
     public boolean isGameOver(){

@@ -27,6 +27,7 @@ public abstract class Bot extends Player {
     // Abstract method to execute the move with specific algorithm
     public abstract Point executeMove();
 
+    // Protected method to make a random move
     protected Point randomMove() {
         while (true) {
             Point coordinate = getRandomCoordinates();

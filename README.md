@@ -1,0 +1,30 @@
+# Tic-Tac-Toe with AI
+
+## Project Description
+
+## Getting Started 
+
+### Prerequisites
+
+- Java Development Kit (JDK) installed on your machine. You can download it from [Oracle's official website](https://www.oracle.com/java/technologies/javase-downloads.html).
+
+### Running the Application
+
+1. Clone the repository or download the code files.
+2. Navigate to the project directory.
+3. Compile the Java code using the following command:
+   ```sh
+   javac !name.java
+   ```
+4. Run the application using the command:
+   ```sh
+   java !name
+   ```
+5. **Follow the On-Screen Prompts:**
+
+## Example
+
+
+## Author
+
+- Isaúl Tirado [https://github.com/isaultirado77]

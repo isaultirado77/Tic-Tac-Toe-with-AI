@@ -125,7 +125,7 @@ public class TicTacToeBoard implements Board {
         List<Point> emptyCells = new ArrayList<Point>();
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
-                if (getCellState(i, j) != Cell.EMPTY) {
+                if (getCellState(i, j) == Cell.EMPTY) {
                     emptyCells.add(new Point(i, j));
                 }
             }
@@ -140,6 +140,10 @@ public class TicTacToeBoard implements Board {
     @Override
     public boolean isEmptyCell(int row, int col) {
         return board[row][col].equals(Cell.EMPTY);
+    }
+
+    public boolean isEmptyBoard(){
+        return getEmptyCells().size() == 9;
     }
 
     @Override

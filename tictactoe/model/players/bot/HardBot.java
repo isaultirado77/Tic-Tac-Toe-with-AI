@@ -34,7 +34,8 @@ public class HardBot extends Bot{
         if (nextMoves.isEmpty() || depth == 0){
             // Gameover or depth reached, evaluate score
             bestScore = evaluate();
-        } else {
+        }
+        else {
             for (Point move : nextMoves) {
                 // Try this move for the current "player"
                 board.updateBoard(move.getX(), move.getY(), playerSymbol);

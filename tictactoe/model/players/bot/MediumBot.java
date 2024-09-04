@@ -2,50 +2,47 @@ package tictactoe.model.players.bot;
 
 import tictactoe.model.board.Cell;
 import tictactoe.model.board.Point;
-import tictactoe.model.board.TicTacToeBoard;
 
-public class MediumBot {
+public class MediumBot extends Bot {
 
-    public static Point makeMove(TicTacToeBoard board, Cell symbol) {
+    public MediumBot(Cell mySymbol, String difficulty) {
+        super(mySymbol, difficulty);
+    }
+
+    public Point executeMove() {
 
         // 1. Try to win by making a move that completes three in a row
-        BooleanPoint winMove = findWinningMove(board, symbol);
+        BooleanPoint winMove = findWinningMove(mySymbol);
         if (winMove.getBool()) {
             return winMove.getPoint();
         }
 
         // 2. Try to block opponent's winning move
-        Cell opponentSymbol = getOpponentCell(symbol);
-        BooleanPoint blockMove = findWinningMove(board, opponentSymbol);
+        BooleanPoint blockMove = findWinningMove(oppSymbol);
         if (blockMove.getBool()) {
             return blockMove.getPoint();
         }
 
         // 3. Otherwise, make a random move
-        return makeRandomMove(board);
+        return randomMove();
     }
 
 
-    private static BooleanPoint findWinningMove(TicTacToeBoard board, Cell symbol) {
-        BooleanPoint move = isTwoInRow(board, symbol);
+    private BooleanPoint findWinningMove(Cell symbol) {
+        BooleanPoint move = isTwoInRow(symbol);
         if (move.getBool()) return move;
 
-        move = isTwoInCol(board, symbol);
+        move = isTwoInCol(symbol);
         if (move.getBool()) return move;
 
-        move = isTwoInMainDiag(board, symbol);
+        move = isTwoInMainDiag(symbol);
         if (move.getBool()) return move;
 
-        move = isTwoInSecondaryDiag(board, symbol);
+        move = isTwoInSecondaryDiag(symbol);
         return move;
     }
 
-
-    private static Cell getOpponentCell(Cell botCell) {
-        return botCell == Cell.X ? Cell.O : Cell.X;
-    }
-
-    private static BooleanPoint isTwoInRow(TicTacToeBoard board, Cell symbol) {
+    private BooleanPoint isTwoInRow(Cell symbol) {
         for (int row = 0; row < board.ROWS; row++) {
             for (int col = 0; col < board.COLS - 2; col++) {
 
@@ -71,7 +68,7 @@ public class MediumBot {
         return new BooleanPoint(false, new Point(-1, -1));
     }
 
-    private static BooleanPoint isTwoInCol(TicTacToeBoard board, Cell symbol) {
+    private BooleanPoint isTwoInCol(Cell symbol) {
         for (int col = 0; col < board.COLS; col++) {
             for (int row = 0; row < board.ROWS - 2; row++) {
 
@@ -97,7 +94,7 @@ public class MediumBot {
         return new BooleanPoint(false, new Point(-1, -1));
     }
 
-    private static BooleanPoint isTwoInMainDiag(TicTacToeBoard board, Cell symbol) {
+    private BooleanPoint isTwoInMainDiag(Cell symbol) {
         // Validate center cell first
         if (board.getCellState(1, 1) != symbol) {
             return new BooleanPoint(false, new Point(-1, -1));
@@ -126,7 +123,7 @@ public class MediumBot {
         return new BooleanPoint(false, new Point(-1, -1));
     }
 
-    private static BooleanPoint isTwoInSecondaryDiag(TicTacToeBoard board, Cell symbol) {
+    private BooleanPoint isTwoInSecondaryDiag(Cell symbol) {
         // Validate center cell first
         if (board.getCellState(1, 1) != symbol) {
             return new BooleanPoint(false, new Point(-1, -1));
@@ -153,9 +150,5 @@ public class MediumBot {
         }
 
         return new BooleanPoint(false, new Point(-1, -1));
-    }
-
-    private static Point makeRandomMove(TicTacToeBoard board) {
-        return EasyBot.makeMove(board);
     }
 }

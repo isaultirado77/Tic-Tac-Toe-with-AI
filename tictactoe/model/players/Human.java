@@ -23,7 +23,7 @@ public class Human extends Player{
         while (true) {
             String lineCoordinate = getLineCoordinate();
             Point coordinate = CoordinateParser.parse(lineCoordinate);
-            if (handlePlayerIntCoordinate(coordinate, board)) {
+            if (handlePlayerIntCoordinate(coordinate)) {
                 return parseToBoardCoordinate(coordinate);
             }
         }
@@ -37,7 +37,7 @@ public class Human extends Player{
         return IOHandler.promptEnterTheCoordinates();
     }
 
-    private boolean handlePlayerIntCoordinate(Point p, TicTacToeBoard board) {
+    private boolean handlePlayerIntCoordinate(Point p) {
         if (isCoordinateOutOfRange(p)) {
             IOHandler.displayErrorCoordinates();
             return false;

@@ -1,34 +1,50 @@
 package tictactoe.model.players.bot;
 
 import tictactoe.io.IOHandler;
-import tictactoe.io.IOMessages;
 import tictactoe.model.board.Cell;
 import tictactoe.model.board.Point;
 import tictactoe.model.board.TicTacToeBoard;
 import tictactoe.model.players.Player;
 
-public class Bot extends Player {
+import java.util.Random;
 
-    private final String difficulty;
+public abstract class Bot extends Player {
 
-    public Bot(Cell symbol, String difficulty) {
-        super(symbol);
+    protected final String difficulty;
+
+    public Bot(Cell mySymbol, String difficulty) {
+        super(mySymbol);
         this.difficulty = difficulty;
     }
 
     @Override
-    public Point makeMove(TicTacToeBoard board) {
-        return switch (difficulty) {
-            case "easy" -> {
-                IOHandler.displayMakeBotMove(difficulty);
-                yield EasyBot.makeMove(board);
-            }
-            case "medium" -> {
-                IOHandler.displayMakeBotMove(difficulty);
-                yield MediumBot.makeMove(board, getMySymbol());
-            }
-            default -> throw new IllegalStateException("Error! " + IOMessages.BAD_PARAMETERS.getTEXT());
-        };
+    public Point makeMove(TicTacToeBoard currentBoard) {
+        setBoard(currentBoard);
+        IOHandler.displayMakeBotMove(difficulty);
+        return executeMove();
     }
 
+    // Abstract method to execute the move with specific algorithm
+    public abstract Point executeMove();
+
+    protected Point randomMove() {
+        while (true) {
+            Point coordinate = getRandomCoordinates();
+
+            if (board.isEmptyCell(coordinate.getX(), coordinate.getY())) {
+                return coordinate;
+            }
+        }
+    }
+
+    private Point getRandomCoordinates() {
+        int row = generateRandomNumber();
+        int col = generateRandomNumber();
+        return new Point(row, col);
+    }
+
+    private int generateRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(3);
+    }
 }

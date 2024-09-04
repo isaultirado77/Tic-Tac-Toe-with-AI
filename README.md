@@ -14,11 +14,11 @@
 2. Navigate to the project directory.
 3. Compile the Java code using the following command:
    ```sh
-   javac !name.java
+   javac Main.java
    ```
 4. Run the application using the command:
    ```sh
-   java !name
+   java Main
    ```
 5. **Follow the On-Screen Prompts:**
 
@@ -27,4 +27,4 @@
 
 ## Author
 
-- Isaúl Tirado [https://github.com/isaultirado77]
+- [Isaúl Tirado](https://github.com/isaultirado77)

@@ -25,7 +25,7 @@ public class Bot extends Player {
             }
             case "medium" -> {
                 IOHandler.displayMakeBotMove(difficulty);
-                yield MediumBot.makeMove(board, getSymbol());
+                yield MediumBot.makeMove(board, getMySymbol());
             }
             default -> throw new IllegalStateException("Error! " + IOMessages.BAD_PARAMETERS.getTEXT());
         };

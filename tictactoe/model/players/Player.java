@@ -6,14 +6,26 @@ import tictactoe.model.board.TicTacToeBoard;
 
 public abstract class Player {
 
-    private final Cell symbol; // The player symbol can be: 'X' or 'O'
+    protected final Cell mySymbol; // The player symbol can be: 'X' or 'O'
+    protected final Cell oppSymbol; // The opppnent player symbol can be: 'X' or 'O'
+    protected TicTacToeBoard board;  // Current board of the game;
 
     public Player(Cell symbol){
-        this.symbol = symbol;
+        this.mySymbol = symbol;
+        this.board = new TicTacToeBoard();
+        this.oppSymbol = symbol == Cell.X ? Cell.O : Cell.X;
     }
 
-    public Cell getSymbol() {
-        return symbol;
+    public Cell getMySymbol() {
+        return mySymbol;
+    }
+
+    public Cell getOppSymbol(){
+        return oppSymbol;
+    }
+
+    public void setBoard(TicTacToeBoard newBoard){
+        this.board = newBoard;
     }
 
     // Abstract method to make a move
@@ -21,6 +33,6 @@ public abstract class Player {
 
     @Override
     public String toString() {
-        return symbol.getSymbol();
+        return mySymbol.getSymbol();
     }
 }

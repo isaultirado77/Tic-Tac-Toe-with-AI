@@ -14,11 +14,12 @@ public class Human extends Player{
     }
 
     @Override
-    public Point makeMove(TicTacToeBoard board) {
-        return getPlayerCoordinate(board);
+    public Point makeMove(TicTacToeBoard currentBoard) {
+        setBoard(currentBoard);
+        return getPlayerCoordinate();
     }
 
-    private Point getPlayerCoordinate(TicTacToeBoard board){
+    private Point getPlayerCoordinate(){
         while (true) {
             String lineCoordinate = getLineCoordinate();
             Point coordinate = CoordinateParser.parse(lineCoordinate);

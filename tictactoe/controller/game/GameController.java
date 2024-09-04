@@ -33,12 +33,13 @@ public class GameController {
 
     public void run() {
         while (true) {
+            if (gameEngine.getPlayer1() == null ||gameEngine.getPlayer2() == null) {
+                break;
+            }
             gameEngine.displayBoardState();
             gameEngine.makeMove();
             if (gameEngine.isGameOver()) {
                 gameEngine.displayGameState();
-                break;
-            } else if (gameEngine.getPlayer1() == null ||gameEngine.getPlayer2() == null) {
                 break;
             }
             gameEngine.switchTurns();

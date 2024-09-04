@@ -8,11 +8,10 @@ import tictactoe.model.board.Point;
 import tictactoe.model.board.TicTacToeBoard;
 import tictactoe.model.players.Human;
 import tictactoe.model.players.Player;
-import tictactoe.model.players.bot.Bot;
 
 public class GameEngine {
 
-    private final TicTacToeBoard board;
+    private final TicTacToeBoard gameBoard;
     private Player player1;
     private Player player2;
     private Player currentPlayer;
@@ -20,7 +19,7 @@ public class GameEngine {
 
 
     public GameEngine(String[] players) {
-        board = new TicTacToeBoard();
+        gameBoard = new TicTacToeBoard();
         isPlayer1Turn = true;
 
         try {
@@ -36,32 +35,35 @@ public class GameEngine {
     private Player createPlayer(String playerType, Cell cell) {
         return switch (playerType.toLowerCase()) {
             case "user" -> new Human(cell);
-            case "easy" -> new Bot(cell, playerType);
-            case "medium" -> new Bot(cell, playerType);
+//            case "easy" -> new Bot(cell, playerType);
+//            case "medium" -> new Bot(cell, playerType);
 //            case "hard" -> new Bot(cell, playerType);
             default -> throw new RuntimeException("Error! " + IOMessages.BAD_PARAMETERS.getTEXT());
         };
     }
 
     public void makeMove() {
-        if (player1 == null || player2 == null) {
-            return;
-        }
         currentPlayer = getCurrentPlayer();
-        Point move = currentPlayer.makeMove(board);
-        updateBoard(move);
+
+        Point move = currentPlayer.makeMove(gameBoard);
+
+        // Update the game board
+        updateGameBoard(move);
+
+        // Update board of the current player
+        currentPlayer.setBoard(gameBoard);
     }
 
     public boolean isGameOver() {
-        return board.isGameOver();
+        return gameBoard.isGameOver();
     }
 
     private boolean isWin() {
-        return board.isWin();
+        return gameBoard.isWin();
     }
 
     private boolean isDraw() {
-        return board.isDraw();
+        return gameBoard.isDraw();
     }
 
     public void displayGameState() {
@@ -77,12 +79,12 @@ public class GameEngine {
         return isPlayer1Turn ? player1 : player2;
     }
 
-    private void updateBoard(Point p) {
-        board.updateBoard(p.getX(), p.getY(), currentPlayer.getSymbol());
+    private void updateGameBoard(Point p) {
+        gameBoard.updateBoard(p.getX(), p.getY(), currentPlayer.getMySymbol());
     }
 
     public void displayBoardState() {
-        board.displayBoard();
+        gameBoard.displayBoard();
     }
 
     public Player getPlayer1(){

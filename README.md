@@ -14,15 +14,18 @@ The game is designed as a command-line interface (CLI) and follows a modular str
 
 1. Clone the repository or download the code files.
 2. Navigate to the project directory.
-3. Compile the Java code using the following command:
    ```sh
-   javac Main.java
+    cd .\Tic-Tac-Toe-with-AI-main\
    ```
-4. Run the application using the command:
+4. Compile the Java code using the following command:
    ```sh
-   java Main
+   javac .\tictactoe\Main.java
    ```
-5. **Follow the On-Screen Prompts. **
+5. Run the application using the command:
+   ```sh
+   java tictactoe.Main
+   ```
+6. **Follow the On-Screen Prompts. **
 
 ### How to Play
 

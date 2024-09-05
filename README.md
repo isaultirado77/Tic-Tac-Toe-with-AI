@@ -1,7 +1,13 @@
 # Tic-Tac-Toe with AI
 
 ## Project Description
+...
 
+### Project Structure
+
+#### `io` Package
+
+The `tictactoe.io` package handles data input and output in the command-line interface of the Tic-Tac-Toe game. It contains utilities for printing messages to the user and reading their input, keeping the presentation and data capture logic organized.
 ## Getting Started 
 
 ### Prerequisites

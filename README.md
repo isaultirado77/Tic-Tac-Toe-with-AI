@@ -22,7 +22,42 @@ The game is designed as a command-line interface (CLI) and follows a modular str
    ```sh
    java Main
    ```
-5. **Follow the On-Screen Prompts:**
+5. **Follow the On-Screen Prompts. **
+
+### How to Play
+
+To play **Tic-Tac-Toe with AI**, follow these simple steps:
+
+1. **Start a Game**:  
+   Use the `start` command followed by the type of players:
+   ```sh
+   > start <player1_type> <player2_type>
+   ```
+   - `<player1_type>` and `<player2_type>` can be `user`, `easy`, `medium`, or `hard`.
+   Example:
+   ```sh
+   Input command: > start user hard
+   ```
+
+2. **Making Moves**:  
+   Enter your move by specifying the row and column as two numbers (both between 1 and 3):
+   ```sh
+   Enter the coordinates: > 2 3
+   ```
+   This places your symbol in the second row, third column.
+
+3. **Game End**:  
+   The game will automatically check for a winner or draw after every move. The game ends if:
+   - A player gets three in a row (horizontally, vertically, or diagonally).
+   - All cells are filled, resulting in a draw.
+
+4. **Exit**:  
+   To exit the game, type:
+   ```sh
+   Input command: > exit
+   ```
+
+This simple input-driven system makes it easy to play against a human or AI opponent.
 
 ## Example
 ```

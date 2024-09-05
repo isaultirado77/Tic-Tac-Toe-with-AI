@@ -3,6 +3,28 @@
 ## Project Description
 ...
 
+## Getting Started 
+
+### Prerequisites
+
+- Java Development Kit (JDK) installed on your machine. You can download it from [Oracle's official website](https://www.oracle.com/java/technologies/javase-downloads.html).
+
+### Running the Application
+
+1. Clone the repository or download the code files.
+2. Navigate to the project directory.
+3. Compile the Java code using the following command:
+   ```sh
+   javac Main.java
+   ```
+4. Run the application using the command:
+   ```sh
+   java Main
+   ```
+5. **Follow the On-Screen Prompts:**
+
+## Example
+
 ### Project Structure
 
 #### `io` Package
@@ -33,29 +55,16 @@ The `players` subpackage handles player representations, both human and bot:
   - **`EasyBot`**: Low-difficulty bot with random moves.
   - **`MediumBot`**: Intermediate bot with basic strategic moves.
   - **`HardBot`**: Advanced bot using the minimax algorithm for optimal play.
-  
-## Getting Started 
+#### `controller.model` Package
+The `controller.game` package is responsible for managing the logic and flow of the game. It consists of the following classes:
 
-### Prerequisites
+1. **`CoordinateParser`**: Converts player input into coordinates (`Point`) to locate a position on the board. It validates the format of the entered coordinates and reports errors if needed.
 
-- Java Development Kit (JDK) installed on your machine. You can download it from [Oracle's official website](https://www.oracle.com/java/technologies/javase-downloads.html).
+2. **`GameEngine`**: Manages the game's mechanics, including turn control, executing and updating moves, and checking the game status (win, draw, etc.). It also creates players based on the specified type, whether they are humans or bots with various difficulty levels.
 
-### Running the Application
+3. **`GameController`**: Oversees the main game flow, allowing for starting and controlling games through commands, configuring players, and managing interaction between the user and the system.
 
-1. Clone the repository or download the code files.
-2. Navigate to the project directory.
-3. Compile the Java code using the following command:
-   ```sh
-   javac Main.java
-   ```
-4. Run the application using the command:
-   ```sh
-   java Main
-   ```
-5. **Follow the On-Screen Prompts:**
-
-## Example
-
+This package ensures that the interaction between players, the board, and the game rules is carried out logically and orderly in each game.
 
 ## Author
 

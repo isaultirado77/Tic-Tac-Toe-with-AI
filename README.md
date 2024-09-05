@@ -1,7 +1,8 @@
 # Tic-Tac-Toe with AI
 
 ## Project Description
-...
+**Tic-Tac-Toe with AI** is a Java project that implements the classic game of Tic-Tac-Toe for two players, with the option to play against an artificial intelligence (AI) that offers different difficulty levels: easy, medium, and hard. The most advanced level uses the **minimax** algorithm, ensuring optimal and challenging gameplay.
+The game is designed as a command-line interface (CLI) and follows a modular structure organized into packages, which facilitates the separation of responsibilities between the board model, the players (both human and AI), and the game control logic. 
 
 ## Getting Started 
 
@@ -24,7 +25,54 @@
 5. **Follow the On-Screen Prompts:**
 
 ## Example
+```
+Input command: > start hard user
+Making move level "hard"
+---------
+|       |
+| X     |
+|       |
+---------
+Enter the coordinates: > 2 2
+---------
+|       |
+| X O   |
+|       |
+---------
+Making move level "hard"
+---------
+|   X   |
+| X O   |
+|       |
+---------
+Enter the coordinates: > 3 2
+---------
+|   X   |
+| X O   |
+|   O   |
+---------
+Making move level "hard"
+---------
+| X X   |
+| X O   |
+|   O   |
+---------
+Enter the coordinates: > 3 1
+---------
+| X X   |
+| X O   |
+| O O   |
+---------
+Making move level "hard"
+---------
+| X X X |
+| X O   |
+| O O   |
+---------
+X wins
 
+Input command: > exit
+```
 ### Project Structure
 
 #### `io` Package
